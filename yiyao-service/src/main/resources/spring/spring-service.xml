@@ -44,7 +44,7 @@
 		<property name="typeAliasesPackage" value="com.xy.yiyao.dal.entity" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath*:com/xy/yiyao/dal/dao/**/*Dao.xml</value>
+				<value>classpath*:com/xy/yiyao/dal/dao/*Dao.xml</value>
 			</list>
 		</property>
 	</bean>
