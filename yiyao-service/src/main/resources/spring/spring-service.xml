@@ -9,8 +9,11 @@
                            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-                           
+    <!-- 开启注解事务 -->                       
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 加载配置文件 --> 
+	<context:property-placeholder file-encoding="UTF-8" location="classpath:config.properties"/>
 	
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -38,7 +41,7 @@
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="project.DataSource" />
+		<property name="dataSource" ref="dataSource" />
 		<property name="failFast" value="true" />
 		<property name="configLocation" value="classpath:mybatis-configuration.xml" />
 		<property name="typeAliasesPackage" value="com.xy.yiyao.dal.entity" />
