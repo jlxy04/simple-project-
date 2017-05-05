@@ -23,9 +23,8 @@ public class HelloController {
 	private DemoService demoService;
 	
 	@RequestMapping("/hello")
-    public @ResponseBody String test() {
-		DemoModel demoModel = new DemoModel();
-		demoService.addUser(demoModel );
+    public @ResponseBody String test(DemoModel demoModel) {
+		demoService.addUser(demoModel);
         return "hello, world! This com from spring!";
     }
 }
