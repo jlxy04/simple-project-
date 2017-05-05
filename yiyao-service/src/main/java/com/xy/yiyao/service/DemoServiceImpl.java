@@ -3,6 +3,8 @@
  */
 package com.xy.yiyao.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -11,6 +13,7 @@ import com.xy.yiyao.api.model.DemoModel;
 import com.xy.yiyao.api.service.DemoService;
 import com.xy.yiyao.dal.dao.DemoDao;
 import com.xy.yiyao.dal.entity.DemoEntity;
+import com.xy.yiyao.mapper.BeanUtil;
 import com.xy.yiyao.mapper.DemoMapper;
 import com.xy.yiyao.util.IDGenerator;
 
@@ -32,5 +35,16 @@ public class DemoServiceImpl implements DemoService{
 			demoDao.addDemo(demoEntity);
 		}
 		return demoModel;
+	}
+	
+	@Override
+	public String deleteById(String id) {
+		demoDao.deleteById(id);
+		return id;
+	}
+	
+	@Override
+	public List<DemoModel> findAll() {
+		return BeanUtil.demoEntity2Model(demoDao.findAll());
 	}
 }

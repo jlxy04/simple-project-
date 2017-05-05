@@ -22,4 +22,6 @@ public interface DemoDao {
 	public List<DemoEntity> findAll();
 	
 	public int addDemo(DemoEntity demoEntity);
+	
+	public int deleteById(@Param("id")String id);
 }

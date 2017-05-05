@@ -88,4 +88,8 @@
 		</set>
 		where id = #{id,jdbcType=VARCHAR}
 	</update>
+	
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from demo_user where id =#{id}
+	</delete>
 </mapper>
