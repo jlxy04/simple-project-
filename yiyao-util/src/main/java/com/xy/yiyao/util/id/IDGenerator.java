@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.xy.yiyao.util;
+package com.xy.yiyao.util.id;
 
 import java.util.UUID;
 

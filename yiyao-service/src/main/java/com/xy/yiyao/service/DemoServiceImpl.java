@@ -15,7 +15,7 @@ import com.xy.yiyao.dal.dao.DemoDao;
 import com.xy.yiyao.dal.entity.DemoEntity;
 import com.xy.yiyao.mapper.BeanUtil;
 import com.xy.yiyao.mapper.DemoMapper;
-import com.xy.yiyao.util.IDGenerator;
+import com.xy.yiyao.util.id.IDGenerator;
 
 /**
  * @author Administrator
