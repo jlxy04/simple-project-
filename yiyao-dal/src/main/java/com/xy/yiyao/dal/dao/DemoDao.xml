@@ -12,7 +12,7 @@
 	<sql id="Base_Column_List">
 		id, name, password, mobile, address, points
 	</sql>
-
+	
 	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
