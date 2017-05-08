@@ -28,7 +28,8 @@ public class PermissionFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		System.out.println(httpServletRequest.getParameterMap());
+		System.out.println("uri ->" + httpServletRequest.getRequestURI());
+//		System.out.println(httpServletRequest.getParameterMap());
 		filterChain.doFilter(request, response);
 	}
 
