@@ -23,7 +23,7 @@
 	<select id="findAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from demo_user
+		from demo_user limit 0,15
 	</select>
 
 	<insert id="addDemo" parameterType="com.xy.yiyao.dal.entity.DemoEntity">
