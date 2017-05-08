@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.xy.yiyao.controll.test;
+package com.xy.yiyao.controll;
 
 import java.util.List;
 
