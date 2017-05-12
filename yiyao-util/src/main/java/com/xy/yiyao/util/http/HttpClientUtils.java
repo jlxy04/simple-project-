@@ -95,6 +95,10 @@ public class HttpClientUtils {
 	public static String toPost(String url, Map<String, String> map) throws IOException {
 		return toPost(url, map, "UTF-8");
 	}
+	
+	public static String toPost(String url, Map<String, String> headers, Map<String, String> map) throws IOException {
+		return toPost(url, headers, map, "UTF-8");
+	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static String toPost(String url, Map<String, String> map, String charset) throws IOException {
@@ -118,6 +122,59 @@ public class HttpClientUtils {
 				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(list, charset);
 				httpPost.setEntity(entity);
 			}
+			response = httpClient.execute(httpPost);
+			if (response != null) {
+				response.setHeader(HTTP.CONTENT_ENCODING, charset);
+				HttpEntity resEntity = response.getEntity();
+				if (resEntity != null) {
+					logger.debug("响应状态码:" + response.getStatusLine());
+					result = EntityUtils.toString(resEntity, charset);
+					logger.debug("响应结果：" + result);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (response != null) {
+				response.close();
+			}
+			if (httpClient != null) {
+				httpClient.close();
+			}
+		}
+		return result;
+	}
+	
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static String toPost(String url, Map<String, String> heads, Map<String, String> map, String charset) throws IOException {
+		CloseableHttpClient httpClient = null;
+		HttpPost httpPost = null;
+		CloseableHttpResponse response = null;
+		String result = null;
+		try {
+			httpClient = createDefault();
+			httpPost = new HttpPost(url);
+			// 设置超时 10s
+			httpPost.setConfig(getTimeOutConfig(10000));
+			// 设置参数
+			List<NameValuePair> list = new ArrayList<NameValuePair>();
+			Iterator iterator = map.entrySet().iterator();
+			while (iterator.hasNext()) {
+				Entry<String, String> elem = (Entry<String, String>) iterator.next();
+				list.add(new BasicNameValuePair(elem.getKey(), elem.getValue()));
+			}
+			if (list.size() > 0) {
+				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(list, charset);
+				httpPost.setEntity(entity);
+			}
+			
+			Iterator headIterator = heads.entrySet().iterator();
+			while (headIterator.hasNext()) {
+				Entry<String, String> elem = (Entry<String, String>) headIterator.next();
+				httpPost.setHeader(elem.getKey(), elem.getValue());
+			}
+			
 			response = httpClient.execute(httpPost);
 			if (response != null) {
 				response.setHeader(HTTP.CONTENT_ENCODING, charset);

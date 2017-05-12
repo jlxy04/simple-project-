@@ -4,6 +4,7 @@
 package com.xy.yiyao.filter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -28,6 +29,9 @@ public class PermissionFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+		System.out.println(httpServletRequest.getHeader("channel"));
+		System.out.println(httpServletRequest.getHeader("key1"));
+		System.out.println(httpServletRequest.getHeader("key2"));
 		System.out.println("uri ->" + httpServletRequest.getRequestURI());
 //		System.out.println(httpServletRequest.getParameterMap());
 		filterChain.doFilter(request, response);
