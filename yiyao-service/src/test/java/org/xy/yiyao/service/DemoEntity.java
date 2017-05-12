@@ -1,4 +1,4 @@
-package com.xy.yiyao.util;
+package org.xy.yiyao.service;
 
 /**
  * 测试entity
