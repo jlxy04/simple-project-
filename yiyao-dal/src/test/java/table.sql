@@ -5,5 +5,5 @@ CREATE TABLE `demo_user` (
   `mobile` varchar(11) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `points` int(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
